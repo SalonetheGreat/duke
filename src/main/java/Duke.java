@@ -13,12 +13,13 @@ public class Duke {
         System.out.println("Hello, I'm Duke\nWhat can I do for you?\n");
 
         while (true) {
-            input = sc.next();
+            input = sc.nextLine();
+            String command = input.split(" ")[0];
 
-            if (input.equals("bye"))
+            if (command.equals("bye"))
                 break;
 
-            if (input.equals("list")) {
+            if (command.equals("list")) {
                 for (int i = 0; i < AL.size(); ++i) {
                     System.out.print((i+1) + ".[");
                     if (AL.get(i).isDone())
@@ -27,9 +28,8 @@ public class Duke {
                         System.out.print("x");
                     System.out.println("] " + AL.get(i).getName());
                 }
-            } else if (input.equals("done")) {
-                input = sc.next();
-                int index = Integer.parseInt(input) - 1;
+            } else if (command.equals("done")) {
+                int index = Integer.parseInt(input.substring(5)) - 1;
                 AL.get(index).setDone();
                 System.out.println("Nice! I've marked this task as done:\n" +
                         "[√] " + AL.get(index).getName());

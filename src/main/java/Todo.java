@@ -4,6 +4,16 @@ public class Todo extends Task {
     }
 
     @Override
+    public String getClassID() {
+        return "T";
+    }
+
+    @Override
+    public String getTime() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "[T]" + super.toString();
     }

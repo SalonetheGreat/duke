@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -25,6 +27,19 @@ public class Duke {
                     for (int i = 0; i < AL.size(); ++i) {
                         System.out.println((i+1) + "." + AL.get(i).toString());
                     }
+                    try {
+                        FileWriter fw = new FileWriter("/Users/shalong/IdeaProjects/duke/data/duke.txt");
+                        for (int i = 0; i < AL.size(); ++i) {
+                            fw.write(AL.get(i).getClassID() + " | " + ((AL.get(i).isDone())?1:0) + " |" + AL.get(i).getName());
+                            if (AL.get(i).getClassID().equals("T"))
+                                fw.write("\n");
+                            else
+                                fw.write(" | " + AL.get(i).getTime() + "\n");
+                        }
+                        fw.close();
+                    } catch (IOException e) {
+                        System.out.println(e);
+                    }
                 } else if (command.equals("done")) { // set item to done
                     try {
                         int index = sc.nextInt() - 1;
@@ -36,7 +51,7 @@ public class Duke {
                     }
                 } else { // add item
                     String[] newTask = sc.nextLine().split("/");
-                    if (command.equals("todo")) { // add a todo task
+                    if (command.equals("todo")) { // add a todo
                         if (newTask[0].equals("")) {
                             throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
                         }
@@ -45,7 +60,7 @@ public class Duke {
                                 AL.get(AL.size()-1).toString() + "\n" +
                                 "Now you have " + AL.size() + " tasks in the list.");
                     }
-                    else if (command.equals("deadline")) {
+                    else if (command.equals("deadline")) { // add a deadline
                         try {
                             AL.add(new Deadline(newTask[0], newTask[1]));
                             System.out.println("Got it! I've added this task:\n" +
@@ -55,7 +70,7 @@ public class Duke {
                             System.out.println("☹ OOPS!!! The description of a deadline need to contain a \"/\".");
                         }
                     }
-                    else if (command.equals("event")) {
+                    else if (command.equals("event")) { // add an event
                         try {
                             AL.add(new Events(newTask[0], newTask[1]));
                             System.out.println("Got it! I've added this task:\n" +

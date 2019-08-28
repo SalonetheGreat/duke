@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Task {
+public abstract class Task {
     protected String name;
     protected boolean isDone;
 
@@ -24,6 +24,9 @@ public class Task {
     public String getStatusIcon() {
         return (isDone() ? "\u2713" : "\u2718");
     }
+
+    public abstract String getClassID();
+    public abstract String getTime();
 
     @Override
     public String toString() {

@@ -1,0 +1,3 @@
+T | 0 | youtube
+D | 0 | lkbhae | 1122
+E | 1 | poi  | 3049

@@ -62,7 +62,13 @@ public class Duke {
                     }
                     else if (command.equals("deadline")) { // add a deadline
                         try {
-                            AL.add(new Deadline(newTask[0], newTask[1]));
+                            StringBuilder time = new StringBuilder();
+                            for (int i = 1; i < newTask.length; ++i) {
+                                if (i != 1) time.append("/");
+                                time.append(newTask[i]);
+                            }
+                            AL.add(new Deadline(newTask[0], time.toString()));
+
                             System.out.println("Got it! I've added this task:\n" +
                                     AL.get(AL.size()-1).toString() + "\n" +
                                     "Now you have " + AL.size() + " tasks in the list.");
@@ -72,7 +78,12 @@ public class Duke {
                     }
                     else if (command.equals("event")) { // add an event
                         try {
-                            AL.add(new Events(newTask[0], newTask[1]));
+                            StringBuilder time = new StringBuilder();
+                            for (int i = 1; i < newTask.length; ++i) {
+                                if (i != 1) time.append("/");
+                                time.append(newTask[i]);
+                            }
+                            AL.add(new Deadline(newTask[0], time.toString()));
                             System.out.println("Got it! I've added this task:\n" +
                                     AL.get(AL.size()-1).toString() + "\n" +
                                     "Now you have " + AL.size() + " tasks in the list.");

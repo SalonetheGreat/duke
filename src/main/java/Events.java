@@ -4,7 +4,7 @@ public class Events extends Task {
 
     Events(String name, String at) {
         super(name);
-        this.at = at.substring(3);
+        this.at = at;
     }
 
     @Override

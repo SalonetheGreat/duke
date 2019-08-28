@@ -10,6 +10,8 @@ public class Duke {
         String input;
         ArrayList<Task> AL = new ArrayList<Task>();
         int len = 0;
+        String[] Month = new String[]{"January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"};
 
         // hello
         System.out.println("Hello, I'm Duke\nWhat can I do for you?\n");
@@ -62,13 +64,41 @@ public class Duke {
                     }
                     else if (command.equals("deadline")) { // add a deadline
                         try {
-                            StringBuilder time = new StringBuilder();
-                            for (int i = 1; i < newTask.length; ++i) {
-                                if (i != 1) time.append("/");
-                                time.append(newTask[i]);
+                            if (newTask.length == 4) {
+                                try {
+                                    // date & time
+                                    int date = Integer.parseInt(newTask[1].substring(3));
+                                    int month = Integer.parseInt(newTask[2]);
+                                    int year = Integer.parseInt(newTask[3].split(" ")[0]);
+                                    if (newTask[3].split(" ")[1].length() != 4)
+                                        throw new NumberFormatException();
+                                    int moment = Integer.parseInt(newTask[3].split(" ")[1]);
+                                    StringBuilder time = new StringBuilder();
+                                    if (date%10 == 1) time.append(date + "st of ");
+                                    else if (date%10 == 2) time.append(date + "nd of ");
+                                    else if (date%10 == 3) time.append(date + "rd of ");
+                                    else time.append(date + "th of ");
+                                    time.append(Month[month-1] + " " + year + ", ");
+                                    if (moment/100 == 0) time.append("12am");
+                                    else if (moment/100 < 12) time.append(moment/100 + "am");
+                                    else time.append(moment/100 + "pm");
+                                    AL.add(new Deadline(newTask[0], time.toString()));
+                                } catch (NumberFormatException e) {
+                                    StringBuilder time = new StringBuilder();
+                                    for (int i = 1; i < newTask.length; ++i) {
+                                        if (i != 1) time.append("/");
+                                        time.append(newTask[i]);
+                                    }
+                                    AL.add(new Deadline(newTask[0], time.toString().substring(3)));
+                                }
+                            } else {
+                                StringBuilder time = new StringBuilder();
+                                for (int i = 1; i < newTask.length; ++i) {
+                                    if (i != 1) time.append("/");
+                                    time.append(newTask[i]);
+                                }
+                                AL.add(new Deadline(newTask[0], time.toString().substring(3)));
                             }
-                            AL.add(new Deadline(newTask[0], time.toString()));
-
                             System.out.println("Got it! I've added this task:\n" +
                                     AL.get(AL.size()-1).toString() + "\n" +
                                     "Now you have " + AL.size() + " tasks in the list.");
@@ -78,12 +108,41 @@ public class Duke {
                     }
                     else if (command.equals("event")) { // add an event
                         try {
-                            StringBuilder time = new StringBuilder();
-                            for (int i = 1; i < newTask.length; ++i) {
-                                if (i != 1) time.append("/");
-                                time.append(newTask[i]);
+                            if (newTask.length == 4) {
+                                try {
+                                    // date & time
+                                    int date = Integer.parseInt(newTask[1].substring(3));
+                                    int month = Integer.parseInt(newTask[2]);
+                                    int year = Integer.parseInt(newTask[3].split(" ")[0]);
+                                    if (newTask[3].split(" ")[1].length() != 4)
+                                        throw new NumberFormatException();
+                                    int moment = Integer.parseInt(newTask[3].split(" ")[1]);
+                                    StringBuilder time = new StringBuilder();
+                                    if (date%10 == 1) time.append(date + "st of ");
+                                    else if (date%10 == 2) time.append(date + "nd of ");
+                                    else if (date%10 == 3) time.append(date + "rd of ");
+                                    else time.append(date + "th of ");
+                                    time.append(Month[month-1] + " " + year + ", ");
+                                    if (moment/100 == 0) time.append("12am");
+                                    else if (moment/100 < 12) time.append(moment/100 + "am");
+                                    else time.append(moment/100 + "pm");
+                                    AL.add(new Events(newTask[0], time.toString()));
+                                } catch (NumberFormatException e) {
+                                    StringBuilder time = new StringBuilder();
+                                    for (int i = 1; i < newTask.length; ++i) {
+                                        if (i != 1) time.append("/");
+                                        time.append(newTask[i]);
+                                    }
+                                    AL.add(new Events(newTask[0], time.toString().substring(3)));
+                                }
+                            } else {
+                                StringBuilder time = new StringBuilder();
+                                for (int i = 1; i < newTask.length; ++i) {
+                                    if (i != 1) time.append("/");
+                                    time.append(newTask[i]);
+                                }
+                                AL.add(new Events(newTask[0], time.toString().substring(3)));
                             }
-                            AL.add(new Deadline(newTask[0], time.toString()));
                             System.out.println("Got it! I've added this task:\n" +
                                     AL.get(AL.size()-1).toString() + "\n" +
                                     "Now you have " + AL.size() + " tasks in the list.");

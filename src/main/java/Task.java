@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Task {
-    private String name;
-    private boolean isDone;
+    protected String name;
+    protected boolean isDone;
 
     Task (String name) {
         this.name = name;
@@ -19,5 +19,14 @@ public class Task {
 
     public void setDone() {
         isDone = true;
+    }
+
+    public String getStatusIcon() {
+        return (isDone() ? "\u2713" : "\u2718");
+    }
+
+    @Override
+    public String toString() {
+        return "[" + getStatusIcon() + "]" + name;
     }
 }

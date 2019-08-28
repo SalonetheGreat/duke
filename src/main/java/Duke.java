@@ -21,18 +21,13 @@ public class Duke {
 
             if (command.equals("list")) {
                 for (int i = 0; i < AL.size(); ++i) {
-                    System.out.print((i+1) + ".[");
-                    if (AL.get(i).isDone())
-                        System.out.print("√");
-                    else
-                        System.out.print("x");
-                    System.out.println("] " + AL.get(i).getName());
+                    System.out.println((i+1) + "." + AL.get(i).toString());
                 }
             } else if (command.equals("done")) {
                 int index = Integer.parseInt(input.substring(5)) - 1;
                 AL.get(index).setDone();
                 System.out.println("Nice! I've marked this task as done:\n" +
-                        "[√] " + AL.get(index).getName());
+                        AL.get(index).toString());
             } else {
                 AL.add(new Task(input));
                 System.out.println("added: " + input);

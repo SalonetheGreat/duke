@@ -1,24 +1,30 @@
 package Tasks;
 
-public class Task {
-    private String name;
-    private boolean isDone;
+import java.util.Scanner;
 
-    public Task(String name) {
-        this.name = name;
+public abstract class Task {
+    protected String name;
+    protected boolean isDone;
+    protected Scanner lineOfInput;
+    protected String due;
+    protected String info;
+
+    public Task(String line) {
         isDone = false;
+        lineOfInput = new Scanner(line);
+        lineOfInput.next();
+        info = lineOfInput.nextLine().substring(1);
     }
 
-    private String getStatusIcon(){
+    protected final String getStatusIcon(){
         return "[" + (isDone ? "\u2713" : "\u2718") + "]";
     }
 
-    public void setDone() {
+    public final void setDone() {
         isDone = true;
     }
+    public abstract String getTaskTypeIcon();
 
     @Override
-    public String toString() {
-        return getStatusIcon() + " " + name;
-    }
+    public abstract String toString();
 }

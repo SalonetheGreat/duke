@@ -1,18 +1,19 @@
 package Command;
 
 import General.Message;
+import Tasks.Task;
 
 import java.util.ArrayList;
 
 public class AddCommand extends Command {
-    String tbAdd;
-    public AddCommand (String tbAdd) {
-        this.tbAdd = tbAdd;
+    Task tbAdd;
+    public AddCommand (String info) {
+        tbAdd = new Task(info);
     }
 
     @Override
-    public void execute(ArrayList<String> taskList) {
+    public void execute(ArrayList<Task> taskList) {
         taskList.add(tbAdd);
-        System.out.println(Message.getAdd(tbAdd));
+        System.out.println(Message.getAdd(tbAdd.toString()));
     }
 }

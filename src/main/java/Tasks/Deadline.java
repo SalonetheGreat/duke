@@ -31,6 +31,11 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getOnlyTaskTypeIcon() {
+        return "D";
+    }
+
+    @Override
     public String toString() {
         return getTaskTypeIcon() + getStatusIcon() + name + "(by: " + due + ")";
     }

@@ -20,11 +20,23 @@ public abstract class Task {
     protected final String getStatusIcon(){
         return "[" + (isDone ? "\u2713" : "\u2718") + "]";
     }
+    public final String getOnlyStatusIcon() {
+        return (isDone ? "1" : "0");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDue() {
+        return due;
+    }
 
     public final void setDone() {
         isDone = true;
     }
     public abstract String getTaskTypeIcon();
+    public abstract String getOnlyTaskTypeIcon();
 
     @Override
     public abstract String toString();

@@ -24,6 +24,16 @@ public class Todo extends Task {
     }
 
     @Override
+    public String getOnlyTaskTypeIcon() {
+        return "T";
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
     public String toString() {
         return getTaskTypeIcon() + getStatusIcon() + name;
     }

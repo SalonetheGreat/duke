@@ -31,6 +31,11 @@ public class Event extends Task {
     }
 
     @Override
+    public String getOnlyTaskTypeIcon() {
+        return "E";
+    }
+
+    @Override
     public String toString() {
         return getTaskTypeIcon() + getStatusIcon() + name + "(at: " + due + ")";
     }

@@ -1,10 +1,10 @@
 package Command;
 
-import Command.Command;
 import General.DukeException;
 import General.Message;
 import Tasks.Task;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class ByeCommand extends Command {
@@ -14,7 +14,7 @@ public class ByeCommand extends Command {
         }
     }
     @Override
-    public void execute(ArrayList<Task> taskList) {
+    public void execute(ArrayList<Task> taskList, File file) {
         System.out.println(Message.getBye());
         System.exit(0);
     }

@@ -1,13 +1,11 @@
 package Command;
 
-import Command.Command;
 import General.DukeException;
 import General.Message;
 import Tasks.Task;
 
-import javax.swing.*;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ListCommand extends Command {
     public ListCommand(String line) throws DukeException {
@@ -16,7 +14,7 @@ public class ListCommand extends Command {
         }
     }
     @Override
-    public void execute(ArrayList<Task> taskList) {
+    public void execute(ArrayList<Task> taskList, File file) {
         System.out.println(Message.getList());
         for (int i = 0; i < taskList.size(); i++) {
             System.out.println((i+1) + ". " + taskList.get(i));

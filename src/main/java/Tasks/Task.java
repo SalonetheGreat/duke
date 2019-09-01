@@ -1,5 +1,7 @@
 package Tasks;
 
+import General.DukeException;
+
 import java.util.Scanner;
 
 public abstract class Task {
@@ -9,11 +11,10 @@ public abstract class Task {
     protected String due;
     protected String info;
 
-    public Task(String line) {
+    public Task(String line) throws DukeException {
         isDone = false;
         lineOfInput = new Scanner(line);
         lineOfInput.next();
-        info = lineOfInput.nextLine().substring(1);
     }
 
     protected final String getStatusIcon(){

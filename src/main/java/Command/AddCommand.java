@@ -1,5 +1,6 @@
 package Command;
 
+import General.DukeException;
 import General.Message;
 import Tasks.Deadline;
 import Tasks.Event;
@@ -19,7 +20,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Task> taskList) {
+    public void execute(ArrayList<Task> taskList) throws DukeException {
         String taskType = sc.next();
         switch (taskType) {
             case "todo":

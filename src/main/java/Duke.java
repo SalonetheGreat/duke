@@ -1,4 +1,5 @@
 import Command.Command;
+import General.DukeException;
 import General.Message;
 import Tasks.Task;
 
@@ -15,9 +16,13 @@ public class Duke {
 
         while (input.hasNextLine()) {
             String line = input.nextLine();
-
-            Command command = Parser.getCommand(line);
-            command.execute(taskList);
+            if (line == "\n") System.exit(3);
+            try {
+                Command command = Parser.getCommand(line);
+                command.execute(taskList);
+            } catch (DukeException e) {
+                System.out.println(e);
+            }
         }
     }
 }

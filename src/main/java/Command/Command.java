@@ -17,7 +17,7 @@ public abstract class Command {
             Task thisTask = taskList.get(i);
             pw.print(thisTask.getOnlyTaskTypeIcon() + " | " + thisTask.getOnlyStatusIcon() + " | " + thisTask.getName());
             if (thisTask.getOnlyTaskTypeIcon().equals("T"))
-                pw.println(thisTask.getName());
+                pw.println("");
             else
                 pw.println(" | "  + thisTask.getDue());
         }

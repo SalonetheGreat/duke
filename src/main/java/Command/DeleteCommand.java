@@ -2,10 +2,10 @@ package Command;
 
 import General.DukeException;
 import General.Message;
+import General.Storage;
 import Tasks.Task;
 import Tasks.TaskList;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 
 public class DeleteCommand extends Command {
@@ -23,7 +23,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, File file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, Storage file) throws DukeException, FileNotFoundException {
         Task task;
         try {
             task = taskList.get(index);

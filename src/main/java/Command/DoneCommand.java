@@ -2,9 +2,9 @@ package Command;
 
 import General.DukeException;
 import General.Message;
+import General.Storage;
 import Tasks.TaskList;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 
 public class DoneCommand extends Command {
@@ -22,13 +22,13 @@ public class DoneCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, File file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, Storage storage) throws DukeException, FileNotFoundException {
         try {
             taskList.get(index).setDone();
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException(Message.getOops() + "Please enter a integer that is in range!");
         }
         System.out.println(Message.getDone() + taskList.get(index));
-        writeList(taskList, file);
+        writeList(taskList, storage);
     }
 }

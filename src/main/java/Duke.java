@@ -1,6 +1,7 @@
 import Command.Command;
 import General.DukeException;
 import General.Message;
+import General.Storage;
 import Tasks.Task;
 import Tasks.TaskList;
 
@@ -17,7 +18,7 @@ public class Duke {
         System.out.println(Message.getHello());
         Scanner input = new Scanner(System.in);
 
-        File file = new File("./data/duke.txt");
+        Storage file = new Storage("./data/duke.txt");
         file.createNewFile();
 
         TaskList taskList = new TaskList();

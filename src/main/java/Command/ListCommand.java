@@ -2,9 +2,8 @@ package Command;
 
 import General.DukeException;
 import General.Message;
+import General.Storage;
 import Tasks.TaskList;
-
-import java.io.File;
 
 public class ListCommand extends Command {
     public ListCommand(String line) throws DukeException {
@@ -13,7 +12,7 @@ public class ListCommand extends Command {
         }
     }
     @Override
-    public void execute(TaskList taskList, File file) {
+    public void execute(TaskList taskList, Storage storage) {
         System.out.println(Message.getList());
         for (int i = 0; i < taskList.size(); i++) {
             System.out.println((i+1) + ". " + taskList.get(i));

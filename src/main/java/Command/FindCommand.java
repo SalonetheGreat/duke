@@ -3,6 +3,7 @@ package Command;
 import General.DukeException;
 import General.Message;
 import General.Storage;
+import General.Ui;
 import Tasks.TaskList;
 
 import java.io.FileNotFoundException;
@@ -20,11 +21,11 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Storage storage) throws DukeException, FileNotFoundException {
-        System.out.println(Message.getFind());
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, FileNotFoundException {
+        ui.showMessageLn(Message.getFind());
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).getName().contains(toFind))
-                System.out.println((i+1) + ". " + taskList.get(i));
+                ui.showMessageLn((i+1) + ". " + taskList.get(i));
         }
     }
 }

@@ -2,6 +2,7 @@ import Command.Command;
 import General.DukeException;
 import General.Message;
 import General.Storage;
+import General.Ui;
 import Tasks.Task;
 import Tasks.TaskList;
 
@@ -15,22 +16,23 @@ import java.util.Scanner;
 public class Duke {
     public static void main(String[] args) throws IOException {
 
-        System.out.println(Message.getHello());
-        Scanner input = new Scanner(System.in);
+        Ui ui = new Ui();
+        ui.showWelcome();
 
         Storage file = new Storage("./data/duke.txt");
         file.createNewFile();
 
         TaskList taskList = new TaskList();
 
-        while (input.hasNextLine()) {
-            String line = input.nextLine();
-            if (line == "\n") System.exit(3);
+        boolean isExit = false;
+        while (!isExit) {
             try {
-                Command command = Parser.getCommand(line);
-                command.execute(taskList, file);
+                String line = ui.readLine();
+                Command command = Parser.parse(line);
+                command.execute(taskList, ui,file);
+                isExit = command.isExit();
             } catch (DukeException e) {
-                System.out.println(e);
+                ui.showException(e);
             }
         }
     }

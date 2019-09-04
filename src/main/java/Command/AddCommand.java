@@ -3,6 +3,7 @@ package Command;
 import General.DukeException;
 import General.Message;
 import General.Storage;
+import General.Ui;
 import Tasks.*;
 
 import java.io.FileNotFoundException;
@@ -18,7 +19,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Storage storage) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, FileNotFoundException {
         String taskType = sc.next();
         switch (taskType) {
             case "todo":
@@ -34,7 +35,7 @@ public class AddCommand extends Command {
                 System.exit(1);
         }
         taskList.add(tbAdd);
-        System.out.println(Message.getAdd(tbAdd.toString()));
+        ui.showMessageLn(Message.getAdd(tbAdd.toString()));
         writeList(taskList, storage);
     }
 }

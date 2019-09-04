@@ -3,6 +3,7 @@ package Command;
 import General.DukeException;
 import General.Message;
 import General.Storage;
+import General.Ui;
 import Tasks.TaskList;
 
 public class ExitCommand extends Command {
@@ -12,8 +13,8 @@ public class ExitCommand extends Command {
         }
     }
     @Override
-    public void execute(TaskList taskList, Storage storage) {
-        System.out.println(Message.getExit());
-        System.exit(0);
+    public void execute(TaskList taskList, Ui ui, Storage storage) {
+        setExit();
+        ui.showExit();
     }
 }

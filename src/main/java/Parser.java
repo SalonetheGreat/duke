@@ -15,7 +15,7 @@ public class Parser {
     private static final String EVENT = "event";
     private static final String FIND = "find";
 
-    public static Command getCommand (String line) throws DukeException {
+    public static Command parse (String line) throws DukeException {
         Scanner input = new Scanner(line);
         try {
             String command = input.next();

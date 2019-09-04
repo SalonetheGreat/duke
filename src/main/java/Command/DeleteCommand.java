@@ -3,6 +3,7 @@ package Command;
 import General.DukeException;
 import General.Message;
 import General.Storage;
+import General.Ui;
 import Tasks.Task;
 import Tasks.TaskList;
 
@@ -23,7 +24,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Storage file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, Ui ui, Storage file) throws DukeException, FileNotFoundException {
         Task task;
         try {
             task = taskList.get(index);
@@ -31,8 +32,8 @@ public class DeleteCommand extends Command {
         } catch (IndexOutOfBoundsException e) {
             throw new DukeException(Message.getOops() + "Please enter a integer that is in range!");
         }
-        System.out.println(Message.getDelete1() + task);
-        System.out.println(Message.getDelete2(index));
+        ui.showMessageLn(Message.getDelete1() + task);
+        ui.showMessageLn(Message.getDelete2(index));
         writeList(taskList, file);
     }
 }

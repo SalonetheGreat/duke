@@ -2,6 +2,7 @@ package Command;
 
 import General.DukeException;
 import General.Storage;
+import General.Ui;
 import Tasks.Task;
 import Tasks.TaskList;
 
@@ -9,18 +10,28 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public abstract class Command {
-    public abstract void execute (TaskList taskList, Storage storage) throws DukeException, FileNotFoundException;
+    private boolean exit = false;
+
+    public abstract void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, FileNotFoundException;
 
     protected void writeList (TaskList taskList, Storage storage) throws FileNotFoundException {
-        PrintWriter pw = new PrintWriter(storage.getFile());
+        storage.openPW();
         for (int i = 0; i < taskList.size(); i++) {
             Task thisTask = taskList.get(i);
-            pw.print(thisTask.getOnlyTaskTypeIcon() + " | " + thisTask.getOnlyStatusIcon() + " | " + thisTask.getName());
+            storage.print(thisTask.getOnlyTaskTypeIcon() + " | " + thisTask.getOnlyStatusIcon() + " | " + thisTask.getName());
             if (thisTask.getOnlyTaskTypeIcon().equals("T"))
-                pw.println("");
+                storage.println("");
             else
-                pw.println(" | "  + thisTask.getDue());
+                storage.println(" | "  + thisTask.getDue());
         }
-        pw.close();
+        storage.closePW();
+    }
+
+    public boolean isExit() {
+        return exit;
+    }
+
+    protected void setExit() {
+        exit = true;
     }
 }

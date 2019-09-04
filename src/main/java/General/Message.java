@@ -20,7 +20,7 @@ public class Message {
     }
 
     public static String getAdd(String s) {
-        return "added " + s;
+        return add + s;
     }
 
     public static String getList() {
@@ -29,10 +29,6 @@ public class Message {
 
     public static String getDone() {
         return done;
-    }
-
-    public static String getAdd() {
-        return add;
     }
 
     public static String getOops() {

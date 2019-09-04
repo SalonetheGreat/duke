@@ -13,6 +13,7 @@ public class Parser {
     private static final String TODO = "todo";
     private static final String DEADLINE = "deadline";
     private static final String EVENT = "event";
+    private static final String FIND = "find";
 
     public static Command getCommand (String line) throws DukeException {
         Scanner input = new Scanner(line);
@@ -20,7 +21,7 @@ public class Parser {
             String command = input.next();
             switch (command) {
                 case BYE:
-                    return getByeCommand(line);
+                    return getExitCommand(line);
                 case LIST:
                     return getListCommand(line);
                 case DONE:
@@ -31,6 +32,8 @@ public class Parser {
                 case DEADLINE:
                 case EVENT:
                     return getAddCommand(line);
+                case FIND:
+                    return getFindCommand(line);
                 default:
                     throw new DukeException(Message.getOops() + "I'm sorry, but I don't know what that means :-(");
             }
@@ -39,8 +42,8 @@ public class Parser {
         }
     }
 
-    private static Command getByeCommand (String line) throws DukeException {
-        return new ByeCommand(line);
+    private static Command getExitCommand (String line) throws DukeException {
+        return new ExitCommand(line);
     }
     private static Command getListCommand(String line) throws DukeException {
         return new ListCommand(line);
@@ -53,5 +56,8 @@ public class Parser {
     }
     private static Command getDeleteCommand(String line) throws DukeException {
         return new DeleteCommand(line);
+    }
+    private static Command getFindCommand(String line) throws DukeException {
+        return new FindCommand(line);
     }
 }

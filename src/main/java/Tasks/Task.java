@@ -2,13 +2,14 @@ package Tasks;
 
 import General.DukeException;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public abstract class Task {
     protected String name;
     protected boolean isDone;
     protected Scanner lineOfInput;
-    protected String due;
+    protected Date due;
     protected String info;
 
     public Task(String line) throws DukeException {
@@ -29,8 +30,10 @@ public abstract class Task {
     }
 
     public String getDue() {
-        return due;
+        return due.toString();
     }
+
+    public abstract void setDue(String line) throws DukeException;
 
     public final void setDone() {
         isDone = true;

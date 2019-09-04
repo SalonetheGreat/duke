@@ -2,8 +2,9 @@ package Tasks;
 
 import General.DukeException;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class Todo extends Task {
     private String name;
@@ -14,8 +15,8 @@ public class Todo extends Task {
         } catch (NoSuchElementException e) {
             throw new DukeException("☹ OOPS!!! The description of a todo cannot be empty.");
         }
-        due = "";
         name = info;
+        setDue(info);
     }
 
     @Override
@@ -31,6 +32,10 @@ public class Todo extends Task {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public void setDue(String line) {
     }
 
     @Override

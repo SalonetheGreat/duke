@@ -15,11 +15,9 @@ public class DoneCommand extends Command {
     private int index;
 
     public DoneCommand(String line) throws DukeException {
-        Scanner sc = new Scanner(line);
-        sc.next();
         try {
-            index = Integer.parseInt(sc.nextLine().substring(1))-1;
-        } catch (NoSuchElementException e) {
+            index = Integer.parseInt(line.substring(5))-1;
+        } catch (StringIndexOutOfBoundsException e) {
             throw new DukeException(Message.getOops() + "The description of a done cannot be empty.");
         } catch (NumberFormatException e) {
             throw new DukeException(Message.getOops() + "The description of a done needs to be a integer!");

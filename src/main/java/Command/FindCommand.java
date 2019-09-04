@@ -16,7 +16,7 @@ public class FindCommand extends Command {
     public FindCommand(String line) throws DukeException {
         try {
             toFind = line.substring(5);
-        } catch (NoSuchElementException e) {
+        } catch (StringIndexOutOfBoundsException e) {
             throw new DukeException(Message.getOops() + "The description of a find cannot be empty.");
         }
     }

@@ -2,12 +2,10 @@ package Command;
 
 import General.DukeException;
 import General.Message;
-import Tasks.Task;
+import Tasks.TaskList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
 public class FindCommand extends Command {
 
@@ -22,7 +20,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Task> taskList, File file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, File file) throws DukeException, FileNotFoundException {
         System.out.println(Message.getFind());
         for (int i = 0; i < taskList.size(); i++) {
             if (taskList.get(i).getName().contains(toFind))

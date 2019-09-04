@@ -2,10 +2,9 @@ package Command;
 
 import General.DukeException;
 import General.Message;
-import Tasks.Task;
+import Tasks.TaskList;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class ExitCommand extends Command {
     public ExitCommand(String line) throws DukeException {
@@ -14,7 +13,7 @@ public class ExitCommand extends Command {
         }
     }
     @Override
-    public void execute(ArrayList<Task> taskList, File file) {
+    public void execute(TaskList taskList, File file) {
         System.out.println(Message.getExit());
         System.exit(0);
     }

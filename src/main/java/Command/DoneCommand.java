@@ -2,13 +2,10 @@ package Command;
 
 import General.DukeException;
 import General.Message;
-import Tasks.Task;
+import Tasks.TaskList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 public class DoneCommand extends Command {
 
@@ -25,7 +22,7 @@ public class DoneCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Task> taskList, File file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, File file) throws DukeException, FileNotFoundException {
         try {
             taskList.get(index).setDone();
         } catch (IndexOutOfBoundsException e) {

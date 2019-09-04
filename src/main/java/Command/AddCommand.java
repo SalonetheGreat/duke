@@ -2,14 +2,10 @@ package Command;
 
 import General.DukeException;
 import General.Message;
-import Tasks.Deadline;
-import Tasks.Event;
-import Tasks.Task;
-import Tasks.Todo;
+import Tasks.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddCommand extends Command {
@@ -22,7 +18,7 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(ArrayList<Task> taskList, File file) throws DukeException, FileNotFoundException {
+    public void execute(TaskList taskList, File file) throws DukeException, FileNotFoundException {
         String taskType = sc.next();
         switch (taskType) {
             case "todo":

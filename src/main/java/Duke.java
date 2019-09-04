@@ -2,6 +2,7 @@ import Command.Command;
 import General.DukeException;
 import General.Message;
 import Tasks.Task;
+import Tasks.TaskList;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +20,7 @@ public class Duke {
         File file = new File("./data/duke.txt");
         file.createNewFile();
 
-        ArrayList<Task> taskList = new ArrayList<>();
+        TaskList taskList = new TaskList();
 
         while (input.hasNextLine()) {
             String line = input.nextLine();

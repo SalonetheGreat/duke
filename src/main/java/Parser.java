@@ -9,6 +9,7 @@ public class Parser {
     private static final String BYE = "bye";
     private static final String LIST = "list";
     private static final String DONE = "done";
+    private static final String DELETE = "delete";
     private static final String TODO = "todo";
     private static final String DEADLINE = "deadline";
     private static final String EVENT = "event";
@@ -24,6 +25,8 @@ public class Parser {
                     return getListCommand(line);
                 case DONE:
                     return getDoneCommand(line);
+                case DELETE:
+                    return getDeleteCommand(line);
                 case TODO:
                 case DEADLINE:
                 case EVENT:
@@ -47,5 +50,8 @@ public class Parser {
     }
     private static Command getDoneCommand(String line) throws DukeException {
         return new DoneCommand(line);
+    }
+    private static Command getDeleteCommand(String line) throws DukeException {
+        return new DeleteCommand(line);
     }
 }

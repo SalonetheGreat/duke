@@ -19,7 +19,7 @@ public class Duke {
         Ui ui = new Ui();
         ui.showWelcome();
 
-        Storage file = new Storage("./data/duke.txt");
+        Storage file = new Storage("./data/tasks.txt");
         file.createNewFile();
 
         TaskList taskList = new TaskList();

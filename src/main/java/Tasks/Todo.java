@@ -2,8 +2,6 @@ package Tasks;
 
 import General.DukeException;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.NoSuchElementException;
 
 public class Todo extends Task {

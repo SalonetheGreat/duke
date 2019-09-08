@@ -7,7 +7,6 @@ import Tasks.Task;
 import Tasks.TaskList;
 
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 public abstract class Command {
     private boolean exit = false;

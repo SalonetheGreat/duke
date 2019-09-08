@@ -1,17 +1,10 @@
 import Command.Command;
 import General.DukeException;
-import General.Message;
 import General.Storage;
 import General.Ui;
-import Tasks.Task;
 import Tasks.TaskList;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Duke {
     public static void main(String[] args) throws IOException {

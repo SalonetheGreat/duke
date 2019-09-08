@@ -1,0 +1,6 @@
+todo dinner
+event aluba (at: 1/2/2002 1344
+done 2
+list
+delete 1
+bye

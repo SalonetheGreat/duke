@@ -8,10 +8,18 @@ import Tasks.TaskList;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Set a task as done
+ */
 public class DoneCommand extends Command {
 
     private int index;
 
+    /**
+     * The only constructor for DoneCommand
+     * @param line The string to be parsed
+     * @throws DukeException If the input format is incorrect
+     */
     public DoneCommand(String line) throws DukeException {
         try {
             index = Integer.parseInt(line.substring(5))-1;
@@ -22,6 +30,14 @@ public class DoneCommand extends Command {
         }
     }
 
+    /**
+     * Set a task to done
+     * @param taskList The container for task
+     * @param ui UI dealing with user IO
+     * @param storage Storage to print message into
+     * @throws DukeException If the integer is not in range
+     * @throws FileNotFoundException If fail to find the file
+     */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException, FileNotFoundException {
         try {

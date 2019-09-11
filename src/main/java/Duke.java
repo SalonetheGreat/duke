@@ -6,7 +6,15 @@ import Tasks.TaskList;
 
 import java.io.IOException;
 
+/**
+ * A class including main method
+ */
 public class Duke {
+    /**
+     * Main method
+     * @param args The arguments to be passed in the main method
+     * @throws IOException If fail to create the file
+     */
     public static void main(String[] args) throws IOException {
 
         Ui ui = new Ui();
